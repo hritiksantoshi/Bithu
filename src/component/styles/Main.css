@@ -1,0 +1,287 @@
+.dobIUw {
+    background: url("https://bithu-sol-landing.vercel.app/static/media/h1_banner_bg.b8d05949a0577323e23a.png") center top / cover no-repeat;
+    min-height: 950px;
+    width: 100%;
+    padding-top: 192px;
+}
+.dobIUw .bithu_v1_baner_left {
+    margin-top: 66px;
+    max-width: 500px;
+    width: 100%;
+    min-height: 550px;
+    display: flex;
+    align-items: flex-start;
+    -webkit-box-pack: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.dobIUw .bithu_v1_baner_left h2 {
+    font-family: "Bakbak";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 60px;
+    line-height: 80px;
+    text-transform: uppercase;
+    color: rgb(255, 255, 255);
+    margin-bottom: 32px;
+}
+
+.klYCCI {
+    position: relative;
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    font-family: "Bakbak One";
+    line-height: 22px;
+    text-align: center;
+    font-size: 16px;
+    text-transform: uppercase;
+    box-sizing: border-box;
+    overflow: hidden;
+    z-index: 1;
+    width: 200px;
+    height: 60px;
+    background: rgb(0, 255, 163);
+    color: rgb(17, 17, 17);
+    border: none;
+}
+
+.dobIUw .bithu_v1_baner_left .banner_buttons {
+    display: flex;
+    column-gap: 30px;
+    margin-top: 58px;
+}
+.dobIUw .bithu_v1_baner_left h3 {
+    font-family: "Bakbak    ";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 60px;
+    text-transform: uppercase;
+    color: rgb(255, 255, 255);
+}
+.klYCCI .hover-shape.shape-white {
+    display: none;
+    visibility: hidden;
+    opacity: 0;
+}
+.klYCCI .hover-shape.shape-left {
+    left: 7px;
+    top: 7px;
+}
+.klYCCI .hover-shape {
+    width: 24px;
+}
+
+.klYCCI .hover-shape {
+    position: absolute;
+    transition: all 0.4s ease 0s;
+    width: 15px;
+}
+.klYCCI .hover-shape.shape-right {
+    right: -40px;
+    top: 7px;
+    transform: rotate(90deg);
+    /* visibility: hidden;
+    opacity: 0; */
+}
+.klYCCI .hover-shape.shape-black {
+    display: block;
+    visibility: visible;
+    opacity: 1;
+}
+.bjjqBU {
+    position: relative;
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.2);
+    -webkit-box-align: center;
+    align-items: center;
+    font-family: "Bakbak One";
+    line-height: 22px;
+    text-align: center;
+    font-size: 16px;
+    text-transform: uppercase;
+    box-sizing: border-box;
+    overflow: hidden;
+    z-index: 1;
+    width: 200px;
+    height: 60px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    color: rgb(255, 255, 255);
+}
+
+.bjjqBU .hover-shape.shape-left {
+    left: 7px;
+    top: 7px;
+}
+.bjjqBU .hover-shape {
+    width: 24px;
+}
+
+.bjjqBU .hover-shape {
+    position: absolute;
+    transition: all 0.4s ease 0s;
+    width: 15px;
+}
+.bjjqBU .hover-shape.shape-right {
+    right: -40px;
+    top: 7px;
+    transform: rotate(90deg);
+    visibility: hidden;
+    opacity: 0;
+}
+.bjjqBU .hover-shape.shape-black {
+    display: none;
+    visibility: hidden;
+    opacity: 0;
+}
+
+.dobIUw .bithu_v1_baner_left .coin-info {
+    display: flex;
+    flex-direction: column;
+    margin-top: 37px;
+}
+.dobIUw .bithu_v1_baner_left .coin-info span {
+    font-family: "Bakbak One";
+    font-size: 18px;
+    line-height: 36px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.8);
+}
+.dobIUw .bithu_v1_baner_left .coin-info span .highlighted {
+    color: rgb(255, 230, 0);
+}
+.dobIUw .bithu_v1_baner_right {
+    max-width: 500px;
+    width: 100%;
+    margin-left: auto;
+    margin-top: 66px;
+}
+
+.dobIUw .bithu_v1_baner_right .bithu_v1_baner_right_img_sect {
+    position: relative;
+    width: 100%;
+    height: 550px;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+}
+.dobIUw .bithu_v1_baner_right .mint_live_circle_sect {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    height: 140px;
+    width: 140px;
+    border-radius: 50%;
+    border: none;
+    background: rgb(255, 230, 0);
+    position: absolute;
+    top: -65px;
+    left: -65px;
+    z-index: 1;
+}
+.dobIUw .bithu_v1_baner_right .mint_live_circle_sect .mint_live_circle {
+    position: relative;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+}
+.dobIUw .bithu_v1_baner_right .mint_live_circle_sect .mint_live_circle .mint_live_text {
+    animation-duration: 20s;
+    animation-timing-function: linear;
+    animation-delay: 0s;
+    animation-iteration-count: infinite;
+    animation-direction: normal;
+    animation-fill-mode: none;
+    animation-play-state: running;
+    animation-name: Djvmn;
+    position: absolute;
+}
+.dobIUw .bithu_v1_baner_right .bithu_v1_baner_right_img_sect .bithu_v1_baner_right_img_bg {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+.dobIUw .bithu_v1_baner_right .bithu_v1_baner_right_img_sect .bithu_v1_baner_right_img {
+    position: relative;
+    z-index: 1;
+}
+.juviFN {
+    background: rgba(13, 27, 38, 0.7);
+    min-height: 200px;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    position: relative;
+}
+.juviFN ul {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    height: 100%;
+    z-index: 1;
+    position: relative;
+    padding: 0px;
+    margin: 0px;
+}
+.juviFN ul li {
+    width: 25%;
+}
+.juviFN ul li h3 {
+    font-family: "Bakbak One";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 36px;
+    text-transform: uppercase;
+    color: rgb(255, 255, 255);
+}
+.juviFN ul li h4 {
+    font-family: "Bakbak One";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 36px;
+    color: rgba(255, 255, 255, 0.8);
+}
+.juviFN .bg-shape.shape-top {
+    top: 0px;
+}
+.juviFN .bg-shape.shape-left {
+    left: 0px;
+}
+.juviFN .bg-shape {
+    position: absolute;
+}
+.juviFN .bg-shape.shape-bottom {
+    bottom: 0px;
+}
+.juviFN .bg-shape.shape-right {
+    right: 0px;
+    transform: rotate(90deg);
+}
+.eNiKji {
+    padding: 20px 40px;
+    position: relative;
+    z-index: 1;
+}

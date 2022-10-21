@@ -1,0 +1,115 @@
+.glpCTT {
+    padding-bottom: 120px;
+    padding-top: 130px;
+}
+.glpCTT .bithu_faq_content {
+    max-width: 770px;
+    width: 100%;
+    margin: auto;
+    position: relative;
+}
+
+.text-center {
+    text-align: center!important;
+}
+.dkiXUE {
+    position: relative;
+    z-index: 1;
+}
+.dkiXUE h2 {
+    font-family: "Bakbak One";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 25px;
+    color: rgb(0, 255, 163);
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+.dkiXUE h2 img {
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: -1px;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.dkiXUE h3 {
+    font-family: "Bakbak One";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 48px;
+    line-height: 67px;
+    text-transform: uppercase;
+    color: rgb(255, 255, 255);
+    margin-bottom: 0px;
+}
+.glpCTT .bithu_faq_questions {
+    margin-top: 57px;
+    position: relative;
+}
+.glpCTT .bithu_faq_questions .faq_questions {
+    position: relative;
+    z-index: 1;
+}
+.glpCTT .accordion__item{
+background: rgba(255, 255, 255, 0.05);
+backdrop-filter: blur(10px);
+}
+
+.fBTGbv {
+transition: all 0.4s ease 0s;
+}
+
+.hXEhbi {
+    transition: all 0.4s ease 0s;
+}
+.hXEhbi > div {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+}
+.hXEhbi * {
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+}
+
+.hNexwQ {
+    transition: all 0.4s ease 0s;
+    animation: 0.35s ease-in 0s 1 normal none running cJoqxJ;
+}
+.glpCTT .accordion__body p {
+    padding: 0px 48px 24px 29px;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 28px;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 0px;
+    max-width: 100%;
+}
+p {
+    margin: 0px;
+    line-height: 1.8;
+}
+
+.glpCTT .bithu_faq_questions .faq_questions .accordion__item + .accordion__item {
+    margin-top: 10px;
+}
+.fBTGbv {
+    transition: all 0.4s ease 0s;
+}
+.glpCTT .faq_bg_wattermark {
+    position: absolute;
+    top: 70px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 0;
+}

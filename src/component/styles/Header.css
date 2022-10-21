@@ -1,0 +1,295 @@
+.iGHsRa.bithu_header {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    margin-top: 1px;
+    height: 90px;
+    transition: all 0.3s ease 0s;
+}
+.iGHsRa.bithu_header.sticky {
+    position: fixed;
+    top: 0px;
+    width: 100%;
+    background: rgba(27, 34, 38, 0.8);
+    backdrop-filter: blur(15px);
+    z-index: 1000;
+    margin-top: 0px;
+    transition: all 0.2s ease 0s;
+}
+.iGHsRa {
+    z-index: 999;
+}
+.container, .container-fluid, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
+    width: 100%;
+    padding-right: var(--bs-gutter-x,.75rem);
+    padding-left: var(--bs-gutter-x,.75rem);
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.iGHsRa .bithu_menu_sect {
+    height: 90px;
+    width: 100%;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+}
+
+.iGHsRa .bithu_menu_left_sect {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: start;
+    justify-content: flex-start;
+    width: 15%;
+}
+img {
+    max-width: 100%;
+    height: auto;
+}
+.iGHsRa .bithu_menu_left_sect .logo a {
+    display: inline-block;
+}
+.iGHsRa .bithu_menu_right_sect {
+    width: 85%;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: end;
+    justify-content: end;
+}
+.iGHsRa .bithu_menu_list {
+    margin-left: 65px;
+    margin-right: 96px;
+    max-width: 514px;
+    min-width: 409px;
+    width: 100%;
+}
+.iGHsRa .bithu_menu_btns {
+    display: flex;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    align-items: center;
+    min-width: 284px;
+}
+.iGHsRa .bithu_menu_btns .menu_btn {
+    display: none;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+}
+.iGHsRa .bithu_menu_btns button {
+    color: rgb(255, 255, 255);
+    text-transform: uppercase;
+    font-family: "Bakbak One";
+    font-weight: 400;
+    font-size: 16px;
+}
+.iGHsRa .bithu_menu_btns .menu_btn svg {
+    font-size: 40px;
+}
+.iGHsRa .bithu_menu_btns .join_btn {
+    height: 50px;
+    width: 114px;
+    background-color: transparent;
+}
+.iGHsRa .bithu_menu_list ul li:hover a {
+    color: rgb(0, 255, 163);
+}
+.iGHsRa .bithu_menu_list ul li.submenu .sub_menu_sect {
+    background: transparent;
+    border-top: 50px solid transparent;
+    position: absolute;
+    top: -50px;
+    left: -20px;
+    width: 190px;
+    visibility: hidden;
+    opacity: 0;
+    z-index: -100;
+    transition: all 0.5s ease 0s;
+}
+.iGHsRa .bithu_menu_list ul li.submenu .sub_menu_sect .sub_menu_list {
+    padding: 15px 20px;
+    background: rgb(23, 31, 37);
+    flex-wrap: wrap;
+}
+.iGHsRa .bithu_menu_list ul li.submenu .sub_menu_sect .sub_menu_list li {
+    width: 100%;
+}
+.SpXCk {
+    position: relative;
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.2);
+    -webkit-box-align: center;
+    align-items: center;
+    font-family: "Bakbak One";
+    line-height: 22px;
+    text-align: center;
+    font-size: 16px;
+    text-transform: uppercase;
+    box-sizing: border-box;
+    overflow: hidden;
+    z-index: 1;
+    width: 150px;
+    height: 50px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    color: rgb(255, 255, 255);
+}
+.SpXCk svg {
+    margin-right: 10px;
+    font-size: 24px;
+}
+
+.SpXCk .hover-shape.shape-left {
+    left: 7px;
+    top: 7px;
+}
+.SpXCk .hover-shape {
+    position: absolute;
+    transition: all 0.4s ease 0s;
+    width: 15px;
+}
+.SpXCk .hover-shape.shape-right {
+    right: -40px;
+    top: 7px;
+    transform: rotate(90deg);
+    visibility: hidden;
+    opacity: 0;
+}
+.SpXCk .hover-shape.shape-black {
+    display: none;
+    visibility: hidden;
+    opacity: 0;
+}
+.iGHsRa .bithu_menu_btns .connect_btn{
+height: 50px;
+min-width: 150px;
+border: none;
+margin-left: 20px;
+background: rgba(255, 255, 255, 0.2);
+}
+
+a {
+    outline: none;
+    transition: all 0.4s ease 0s;
+    text-decoration: none !important;
+}
+
+
+.iGHsRa .bithu_menu_list ul {
+    width: 100%;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+}
+.iGHsRa .bithu_menu_list ul li {
+    position: relative;
+    cursor: pointer;
+}
+.iGHsRa .bithu_menu_list ul li a {
+    font-family: "Bakbak One";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 22px;
+    text-align: center;
+    text-transform: uppercase;
+    color: rgb(255, 255, 255);
+}
+
+.iGHsRa .bithu_menu_btns {
+    display: flex;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    align-items: center;
+    min-width: 284px;
+}
+.iGHsRa .bithu_menu_btns .menu_btn {
+    display: none;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+}
+.iGHsRa .bithu_menu_btns button {
+    color: rgb(255, 255, 255);
+    text-transform: uppercase;
+    font-family: "Bakbak One";
+    font-weight: 400;
+    font-size: 16px;
+}
+.iGHsRa .bithu_menu_btns .menu_btn svg {
+    font-size: 40px;
+}
+*/
+.iGHsRa .bithu_menu_btns .join_btn {
+    height: 50px;
+    width: 114px;
+    background-color: transparent;
+}/*
+.SpXCk svg {
+    margin-right: 10px;
+    font-size: 24px;
+}
+.SpXCk .hover-shape.shape-left {
+    left: 7px;
+    top: 7px;
+}
+.SpXCk .hover-shape {
+    position: absolute;
+    transition: all 0.4s ease 0s;
+    width: 15px;
+}
+.SpXCk .hover-shape.shape-right {
+    right: -40px;
+    top: 7px;
+    transform: rotate(90deg);
+    visibility: hidden;
+    opacity: 0;
+}
+.SpXCk .hover-shape.shape-black {
+    display: none;
+    visibility: hidden;
+    opacity: 0;
+}
+*/
+.iGHsRa .bithu_menu_btns .connect_btn {
+    height: 50px;
+    min-width: 150px;
+    border: none;
+    margin-left: 20px;
+    background: rgba(255, 255, 255, 0.2);
+}
+/*
+.eCEEzh svg {
+    margin-right: 10px;
+    font-size: 24px;
+}
+.eCEEzh .hover-shape.shape-left {
+    left: 7px;
+    top: 7px;
+}
+.eCEEzh .hover-shape.shape-right {
+    right: -40px;
+    top: 7px;
+    transform: rotate(90deg);
+    visibility: hidden;
+    opacity: 0;
+}
+
+.eCEEzh .hover-shape {
+    position: absolute;
+    transition: all 0.4s ease 0s;
+    width: 15px;
+} */
