@@ -1,14 +1,22 @@
 import React from "react";
+import GlobalStyles from "./component/styles/GlobalStyle";
 import { Header } from "./component/Header";
 import { Main } from "./component/Main";
-import { Section3} from "./component/Section3";
-import { Section8 } from "./component/Section8";
+import CharacterSlider from "./component/characterSlider/CharacterSlider";
+import HowToMint from "./component/howToMint/HowToMint";
+import Team from "./component/team/Team";
+import {Faq} from "./component/Faq"
+import Footer from "./component/footer";
 const App = () => {
   return <>
+  <GlobalStyles/>
      <Header/> 
      <Main />
-     {/* <Section3/> */}
-     <Section8/>
+     <CharacterSlider/>
+     <HowToMint/>
+     <Team/>
+     <Faq/>
+     <Footer/>
   </>
 }
 
