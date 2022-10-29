@@ -5,7 +5,7 @@ import Button from "../../button/Button";
 import MintModalStyleWrapper from "./MintNow.style";
 import mintImg from "../../../assets/images/icon/mint-img.png";
 import hoverShape from "../../../assets/images/icon/hov_shape_L.svg";
-import { totalMintCount, mint } from '../../../utils/web3mint';
+import { totalMintCount, mint } from '../../../../utils/web3mint';
 import { useEffect } from "react";
 
 const MintNowModal = () => {
