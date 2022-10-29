@@ -11,16 +11,17 @@ import RoadMap from "../component/roadMap/RoadMap";
 import Team from "../component/team/Team";
 import {Faq} from "../component/Faq"; 
 import Footer from "../component/footer/Footer";
-// import MintNowModal from "../component/common/modal/mintNowModal/MintNowModal";
+import MintNowModal from "../component/common/modal/mintNowModal/MintNowModal";
 import WalletModal from "../component/common/modal/walletModal/WalletModal";
 import MetamaskModal from "../component/common/modal/metamask/MetamaskModal";
 import ConnectWallet from "../component/common/modal/metamask/ConnectWallet";
 
 const HomeV1 = () => {
-  const {walletModalvisibility, metamaskModalVisibility, connectWalletModal } = useModal();
+  const {visibility,walletModalvisibility, metamaskModalVisibility, connectWalletModal } = useModal();
   return (
     <Layout>
        <GlobalStyles />  
+       {visibility && <MintNowModal />}
       {walletModalvisibility && <WalletModal />}
       {metamaskModalVisibility && <MetamaskModal/> }
       {connectWalletModal && <ConnectWallet/> }

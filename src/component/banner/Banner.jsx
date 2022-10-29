@@ -8,7 +8,7 @@ import mintLiveDownArrow from "../assets/images/nft/mint_live_down_arrow.svg";
 import mintLiveText from "../assets/images/nft/mint_live_text.png";
 import homeImageBG from "../assets/images/nft/home_img_bg.png";
 import { useEffect, useState } from "react";
-// import { totalMintCount } from '../../utils/web3mint';
+import { totalMintCount } from '../../utils/web3mint';
 
 const Banner = () => {
   const { mintModalHandle, connectWalletModalHanlde, account } = useModal();
@@ -16,9 +16,9 @@ const Banner = () => {
 
   useEffect(() =>{
     const calculateRemainingItems = async () => {
-    //   let totaltMintedItems = await totalMintCount();
-    //   console.log(totaltMintedItems);
-    //   setRemaining(totaltMintedItems);
+       let totaltMintedItems = await totalMintCount();
+       console.log(totaltMintedItems);
+       setRemaining(totaltMintedItems);
     }
 
     calculateRemainingItems();
