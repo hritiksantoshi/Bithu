@@ -3,7 +3,7 @@ import GlobalStyles from "../component/styles/GlobalStyle";
 import Header from "../component/header/Header";
 import Layout from "../component/common/layout/Layout";
 import Banner from "../component/banner/Banner";
-import Counter from "../component/common/counter/Counter";
+import Counter from "../component/counter/Counter";
 import CharacterSlider from "../component/characterSlider/CharacterSlider";
 import HowToMint from "../component/howToMint/HowToMint";
 import About from "../component/about/About";
@@ -27,7 +27,7 @@ const HomeV1 = () => {
       {connectWalletModal && <ConnectWallet/> }
       <Header />
       <Banner />
-      <Counter />
+      <Counter/>
       <CharacterSlider />
       <HowToMint />
       <About />
