@@ -49,9 +49,9 @@ const Banner = () => {
                   </Button>
                 }
                 
-                <Button lg variant="outline">
+                {/* <Button lg variant="outline">
                   Wishlist now
-                </Button>
+                </Button> */}
               </div>
               <div className="coin-info">
                 <span>Max 2 NFTs per wallet . Price 0.09 ETH + gas</span>

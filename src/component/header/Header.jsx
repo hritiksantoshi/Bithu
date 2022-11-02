@@ -11,7 +11,7 @@ import Dropdown from 'react-bootstrap/Dropdown';
 
 const Header = () => {
   const { 
-    walletModalHandle, 
+    walletModalHandle,
     metamaskModalHandle, 
     account, 
     isWalletAlreadyConnected, 
@@ -22,7 +22,7 @@ const Header = () => {
   };
 
   const substr = (str, n) =>{
-    return str.length > n ? str.substr(0, n -1) : str;
+    return str.length > n ? str.substr(0, n -1)+"..."+str.substr(38,43) : str;
   }
 
   const handleWalletConnect = async () =>{
@@ -81,60 +81,10 @@ const Header = () => {
                 <li>
                   <a href="#faq">FAQ</a>
                 </li>
-                <li className="submenu">
-                    <a href="# ">Pages +</a>
-                    <div className="sub_menu_sect">
-                      <ul className="sub_menu_list">
-                        <li>
-                          <a href="/">Home One</a>
-                        </li>
-                        <li>
-                          <a href="/home-two">Home Two</a>
-                        </li>
-                        <li>
-                          <a href="/home-three">Home Three</a>
-                        </li>
-                        <li>
-                          <a href="/home-four">Home Four</a>
-                        </li>
-                        <li>
-                          <a href="/home-five">Home Five</a>
-                        </li>
-
-                        <li>
-                          <a href="/mint-1">Minting Page 1</a>
-                        </li>
-                        <li>
-                          <a href="/mint-2">Minting Page 2</a>
-                        </li>
-                        <li>
-                          <a href="/about">About Us </a>
-                        </li>
-
-                        <li>
-                          <a href="/collections">Collections</a>
-                        </li>
-                        <li>
-                          <a href="/roadmap">Roadmap</a>
-                        </li>
-                        <li>
-                          <a href="/faq"> FAQs </a>
-                        </li>
-                        <li>
-                          <a href="/coming-soon">Coming Soon</a>
-                        </li>
-                        <li>
-                          <a href="/blogs">Latest Blog</a>
-                        </li>
-                        <li>
-                          <a href="/post">Blog Details</a>
-                        </li>
-                        <li>
-                          <a href="/contact">Contact</a>
-                        </li>
-                      </ul>
-                    </div>
-                  </li>
+                <li>
+                  <a href="https://blocktechbrew.com/">Contact</a>
+                </li>
+               
               </ul>
             </div>
             <div className="bithu_menu_btns">
@@ -147,7 +97,7 @@ const Header = () => {
               { account ?
               <Dropdown>
                 <Dropdown.Toggle variant="white" id="dropdown-basic" className="connect_btn">
-                  { substr(account.toString(), 15) }
+                  { substr(account.toString(), 6) }
                 </Dropdown.Toggle>
           
                 <Dropdown.Menu>
