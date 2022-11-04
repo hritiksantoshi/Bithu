@@ -12,7 +12,8 @@ const MintNowModal = () => {
   const [count, setCount] = useState(1);
   const [message, setMessage] = useState('');
   const [remaining, setRemaining] = useState(0);
-  const { mintModalHandle } = useModal();
+  
+  const { mintModalHandle,loader} = useModal();
 
   let totalItems = 9999;
   let price = 0.03;
@@ -54,8 +55,10 @@ const MintNowModal = () => {
       if(txn.length){
         setMessage('Minted successfully!');
       }
+
     }
   }
+  
   
 
   useEffect(() => {
@@ -120,7 +123,7 @@ const MintNowModal = () => {
               </div>
               { message && <p>{message}</p>}
               <div className="modal_mint_btn">
-                <Button lg variant="mint" onClick={() => mintNow() }>
+                <Button lg variant="mint" onClick={() => {mintNow();mintModalHandle();loader()} }>
                   Mint Now
                 </Button>
               </div>

@@ -25,6 +25,7 @@ export const totalMintCount = async () => {
         const contractAddress = "0x0e4e7f16Dd1302726C1FA36d0d1d2AE8b4e106C4";
         const nftContract = new ethers.Contract(contractAddress, contract, signer);
         let totalMint = await nftContract.count();
+        console.log(totalMint,"gghh");
 
         return totalMint;
     }

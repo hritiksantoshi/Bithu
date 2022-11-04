@@ -13,8 +13,18 @@ const ContextProvider = ({ children }) => {
   const [shareModalVisibility, setShareModalvisibility] = useState(false);
   const [metamaskModalVisibility, setMetamaskModalVisibility] = useState(false);
   const [connectWalletModal, setConnectWalletModal] = useState(false);
+  const [loading,setloading] = useState(false);
   const [account, setAccount] = useState("");
+  const [remaining, setRemaining] = useState();
 
+
+  const loader = () => {
+    setloading(true);
+    setTimeout(() => {
+      setloading(false);
+    }, 5000);
+  }
+  
   const mintModalHandle = () => {
     setVisibility(!visibility);
   };
@@ -73,7 +83,11 @@ const ContextProvider = ({ children }) => {
         isWalletAlreadyConnected,
         disconnectWalletFromApp,
         connectWalletModalHanlde,
-        connectWalletModal
+        connectWalletModal,
+        remaining,
+        setRemaining,
+        loader,
+        loading
       }}
     >
       {children}

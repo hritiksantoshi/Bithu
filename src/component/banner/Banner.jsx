@@ -2,28 +2,32 @@ import { useModal } from "../../utils/ModelContext";
 import Counter from "../common/counter/Counter";
 import Button from "../common/button/Button";
 import BannerV1Wrapper from "./Banner.style";
-
+import ClipLoader from "react-spinners/ClipLoader";
 import characterThumb from "../assets/images/nft/Character1.png";
 import mintLiveDownArrow from "../assets/images/nft/mint_live_down_arrow.svg";
 import mintLiveText from "../assets/images/nft/mint_live_text.png";
 import homeImageBG from "../assets/images/nft/home_img_bg.png";
-import { useEffect, useState } from "react";
+import { useEffect, useState, CSSProperties  } from "react";
 import { totalMintCount } from '../../utils/web3mint';
 
+
 const Banner = () => {
-  const { mintModalHandle, connectWalletModalHanlde, account } = useModal();
-  const [remaining, setRemaining] = useState(0);
+  const { mintModalHandle, connectWalletModalHanlde, account ,loader} = useModal();
+   const [remaining, setRemaining] = useState();
 
   useEffect(() =>{
     const calculateRemainingItems = async () => {
        let totaltMintedItems = await totalMintCount();
-       console.log(totaltMintedItems);
-       setRemaining(totaltMintedItems);
+       setRemaining(parseInt(totaltMintedItems._hex,16));     
     }
-
     calculateRemainingItems();
   },[])
+
+  
+  
+
   return (
+   
     <BannerV1Wrapper id="home">
       <div className="container">
         <div className="row">
@@ -32,10 +36,15 @@ const Banner = () => {
               <h2>Crazy Meta 🎯 NFT collections</h2>
               <h3>
                 <span className="count">
-                  <Counter end={remaining} duration={remaining} />
-                </span>{" "}
+                
+                  {remaining}
+                </span>
                 / 9999 Minted
               </h3>
+              <div className="sweet-loading">
+
+      
+    </div>
               <div className="banner_buttons">
                 {
                   account ? 
