@@ -2,49 +2,46 @@ import { useModal } from "../../utils/ModelContext";
 import Counter from "../common/counter/Counter";
 import Button from "../common/button/Button";
 import BannerV1Wrapper from "./Banner.style";
-import ClipLoader from "react-spinners/ClipLoader";
 import characterThumb from "../assets/images/nft/Character1.png";
 import mintLiveDownArrow from "../assets/images/nft/mint_live_down_arrow.svg";
 import mintLiveText from "../assets/images/nft/mint_live_text.png";
 import homeImageBG from "../assets/images/nft/home_img_bg.png";
 import { useEffect, useState, CSSProperties  } from "react";
 import { totalMintCount } from '../../utils/web3mint';
-
+import LoadingOverlay from 'react-loading-overlay';
 
 const Banner = () => {
   const { mintModalHandle, connectWalletModalHanlde, account ,loader} = useModal();
-   const [remaining, setRemaining] = useState();
+   const [remaining, setRemaining] = useState(0);
 
   useEffect(() =>{
     const calculateRemainingItems = async () => {
        let totaltMintedItems = await totalMintCount();
+       console.log(totaltMintedItems,"ghh");
        setRemaining(parseInt(totaltMintedItems._hex,16));     
     }
     calculateRemainingItems();
-  },[])
-
+  },[remaining])
+  
+  
   
   
 
   return (
-   
     <BannerV1Wrapper id="home">
-      <div className="container">
+     
+      <div className="container">   
         <div className="row">
           <div className="col-lg-6">
             <div className="bithu_v1_baner_left">
               <h2>Crazy Meta 🎯 NFT collections</h2>
               <h3>
                 <span className="count">
-                
                   {remaining}
-                </span>
+                </span>{" "}
                 / 9999 Minted
               </h3>
-              <div className="sweet-loading">
 
-      
-    </div>
               <div className="banner_buttons">
                 {
                   account ? 
@@ -94,9 +91,13 @@ const Banner = () => {
               </div>
             </div>
           </div>
+         
         </div>
+        
       </div>
+     
     </BannerV1Wrapper>
+
   );
 };
 
