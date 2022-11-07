@@ -13,16 +13,19 @@ const Banner = () => {
   const { mintModalHandle, connectWalletModalHanlde, account, loading } =
     useModal();
   const [remaining, setRemaining] = useState(0);
+  const calculateRemainingItems = async () => {
+    let totaltMintedItems = await totalMintCount();
+    console.log(totaltMintedItems, "ghh");
+    setRemaining(parseInt(totaltMintedItems._hex, 16));
 
+  };
   useEffect(() => {
-    ( async () => {
-      let totaltMintedItems = await totalMintCount();
-      console.log(totaltMintedItems, "ghh");
-      setRemaining(parseInt(totaltMintedItems._hex, 16));
-
-    })();
-  }, [remaining]);
-
+      calculateRemainingItems();
+  }, [remaining, setRemaining]);
+  
+  setInterval(() => {
+    calculateRemainingItems();
+  }, 2000);
   console.log(remaining, "fgf");
 
   return (
