@@ -36,9 +36,14 @@ export const totalMintCount = async () => {
 }
 
 export const pending = async () => {
+    try{
     const provider = new ethers.providers.Web3Provider(ethereum);
     provider.on("pending", async (tx) => {
                const transaction = await provider.getTransaction(tx);
                console.log(transaction,"transaction");
       })
+    }
+    catch(err){
+        console.log(err);
+    }
 }
