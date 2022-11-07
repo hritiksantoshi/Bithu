@@ -25,7 +25,7 @@ const Banner = () => {
   
   setInterval(() => {
     calculateRemainingItems();
-  }, 2000);
+  }, 1000);
   console.log(remaining, "fgf");
 
   return (
