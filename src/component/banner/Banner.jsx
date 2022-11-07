@@ -2,32 +2,30 @@ import { useModal } from "../../utils/ModelContext";
 import Counter from "../common/counter/Counter";
 import Button from "../common/button/Button";
 import BannerV1Wrapper from "./Banner.style";
-import ClipLoader from "react-spinners/ClipLoader";
 import characterThumb from "../assets/images/nft/Character1.png";
 import mintLiveDownArrow from "../assets/images/nft/mint_live_down_arrow.svg";
 import mintLiveText from "../assets/images/nft/mint_live_text.png";
 import homeImageBG from "../assets/images/nft/home_img_bg.png";
-import { useEffect, useState, CSSProperties  } from "react";
-import { totalMintCount } from '../../utils/web3mint';
-
+import { useEffect, useState } from "react";
+import { totalMintCount } from "../../utils/web3mint";
 
 const Banner = () => {
-  const { mintModalHandle, connectWalletModalHanlde, account ,loading} = useModal();
-   const [remaining, setRemaining] = useState();
+  const { mintModalHandle, connectWalletModalHanlde, account, loading } =
+    useModal();
+  const [remaining, setRemaining] = useState(0);
 
-  useEffect(() =>{
-    const calculateRemainingItems = async () => {
-       let totaltMintedItems = await totalMintCount();
-       setRemaining(parseInt(totaltMintedItems._hex,16));     
-    }
-    calculateRemainingItems();
-  },[])
+  useEffect(() => {
+    ( async () => {
+      let totaltMintedItems = await totalMintCount();
+      console.log(totaltMintedItems, "ghh");
+      setRemaining(parseInt(totaltMintedItems._hex, 16));
 
-  
-  
+    })();
+  }, [remaining]);
+
+  console.log(remaining, "fgf");
 
   return (
-   
     <BannerV1Wrapper id="home">
       <div className="container">
         <div className="row">
@@ -35,35 +33,26 @@ const Banner = () => {
             <div className="bithu_v1_baner_left">
               <h2>Crazy Meta 🎯 NFT collections</h2>
               <h3>
-                <span className="count">
-                
-                  {remaining}
-                </span>
-                / 9999 Minted
+                <span className="count">{remaining}</span> / 9999 Minted
               </h3>
-              <div className="sweet-loading">
-              <ClipLoader
-        color={"#D0021B"}
-        loading={loading}
-        size={50}
-        aria-label="Loading Spinner"
-        data-testid="loader"
-      />
-  
-    </div>
+              <div className="sweet-loading"></div>
               <div className="banner_buttons">
-                {
-                  account ? 
+                {account ? (
                   <Button lg variant="mint" onClick={() => mintModalHandle()}>
                     {" "}
                     Mint now
-                  </Button> :
-                  <Button lg variant="mint" onClick={() => connectWalletModalHanlde()}>
+                  </Button>
+                ) : (
+                  <Button
+                    lg
+                    variant="mint"
+                    onClick={() => connectWalletModalHanlde()}
+                  >
                     {" "}
                     Mint now
                   </Button>
-                }
-                
+                )}
+
                 {/* <Button lg variant="outline">
                   Wishlist now
                 </Button> */}

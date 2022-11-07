@@ -5,61 +5,86 @@ import Button from "../../button/Button";
 import MintModalStyleWrapper from "./MintNow.style";
 import mintImg from "../../../assets/images/icon/mint-img.png";
 import hoverShape from "../../../assets/images/icon/hov_shape_L.svg";
-import { totalMintCount, mint } from '../../../../utils/web3mint';
+import { totalMintCount, mint , pending} from '../../../../utils/web3mint';
 import { useEffect } from "react";
+import addNotification from 'react-push-notification';
 
 const MintNowModal = () => {
   const [count, setCount] = useState(1);
   const [message, setMessage] = useState('');
   const [remaining, setRemaining] = useState(0);
-  
-  const { mintModalHandle,loader} = useModal();
+
+  const { mintModalHandle, loader, setloading } = useModal();
 
   let totalItems = 9999;
   let price = 0.03;
 
   const increaseCount = () => {
-    if(count >= 10){
+    if (count >= 10) {
       setMessage('Maximum minting ammount exceeding!');
-    }else{
+    } else {
       setCount(count + 1);
     }
   }
 
   const dcreaseCount = () => {
-    if(count < 1){
+    if (count < 1) {
       setMessage('Minimum minting ammount 1.');
-    }else{
+    } else {
       setCount(count - 1);
     }
   }
 
   const onChnageCount = (val) => {
-    if(count >= 10){
+    if (count >= 10) {
       setMessage('Maximum minting ammount exceeding!');
-    }else if(count < 1){
+    } else if (count < 1) {
       setMessage('Minimum minting ammount 1.');
-    }else{
+    } else {
       setCount(val);
     }
   }
 
+  const notification = () => {
+    addNotification({
+      title: 'Minting',
+      message: 'Your Minting is in process',
+      duration:7000,
+      theme: 'light',
+      closeButton:"X",
+      backgroundTop:"green",
+      backgroundBottom:"yellowgreen",
+      native:true
+  });
+  }
+
 
   const mintNow = async () => {
-    if(count >= 10){
-      setMessage('Maximum minting ammount exceeding!');
-    }else if(count < 1){
-      setMessage('Minimum minting ammount 1.');
-    }else{
-      let txn = await mint(count);
-      if(txn.length){
-        setMessage('Minted successfully!');
+    try {
+      if (count >= 10) {
+        setMessage('Maximum minting ammount exceeding!');
+      } else if (count < 1) {
+        setMessage('Minimum minting ammount 1.');
+      } else {
+        let txn = await mint(count);
+        setloading(false);  
+        console.log(txn);
+        if(txn){
+          notification();     
+        }
+        if (txn.length) { 
+          setMessage('Minted successfully!');
+        } else {
+          setMessage('Not')
+        }
       }
-
+    }
+    catch (err) {
+      console.log(err,"err");
     }
   }
-  
-  
+
+
 
   useEffect(() => {
     const calculateRemainingItems = async () => {
@@ -68,7 +93,7 @@ const MintNowModal = () => {
     }
 
     calculateRemainingItems();
-  },[totalItems]);
+  }, [totalItems,remaining]);
 
   return (
     <>
@@ -113,17 +138,17 @@ const MintNowModal = () => {
                         value={count}
                         onChange={(e) => onChnageCount(e.target.value)}
                       />
-                      <button onClick={() => increaseCount() }>+</button>
+                      <button onClick={() => increaseCount()}>+</button>
                     </div>
                     <h5>
-                      <span>{ count * price }</span> ETH
+                      <span>{count * price}</span> ETH
                     </h5>
                   </li>
                 </ul>
               </div>
-              { message && <p>{message}</p>}
+              {message && <p>{message}</p>}
               <div className="modal_mint_btn">
-                <Button lg variant="mint" onClick={() => {mintNow();mintModalHandle();loader()} }>
+                <Button lg variant="mint" onClick={() => { mintNow(); mintModalHandle(); loader();}}>
                   Mint Now
                 </Button>
               </div>

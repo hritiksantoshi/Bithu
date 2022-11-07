@@ -16,13 +16,11 @@ const ContextProvider = ({ children }) => {
   const [loading,setloading] = useState(false);
   const [account, setAccount] = useState("");
   const [remaining, setRemaining] = useState();
+  
 
-
+ 
   const loader = () => {
-    setloading(true);
-    setTimeout(() => {
-      setloading(false);
-    }, 5000);
+    setloading(!loading);
   }
   
   const mintModalHandle = () => {
@@ -87,7 +85,8 @@ const ContextProvider = ({ children }) => {
         remaining,
         setRemaining,
         loader,
-        loading
+        loading,
+        setloading
       }}
     >
       {children}
