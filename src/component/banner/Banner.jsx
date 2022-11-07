@@ -12,7 +12,7 @@ import { totalMintCount } from '../../utils/web3mint';
 
 
 const Banner = () => {
-  const { mintModalHandle, connectWalletModalHanlde, account ,loader} = useModal();
+  const { mintModalHandle, connectWalletModalHanlde, account ,loading} = useModal();
    const [remaining, setRemaining] = useState();
 
   useEffect(() =>{
@@ -42,8 +42,14 @@ const Banner = () => {
                 / 9999 Minted
               </h3>
               <div className="sweet-loading">
-
-      
+              <ClipLoader
+        color={"#D0021B"}
+        loading={loading}
+        size={50}
+        aria-label="Loading Spinner"
+        data-testid="loader"
+      />
+  
     </div>
               <div className="banner_buttons">
                 {
