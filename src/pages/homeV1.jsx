@@ -30,10 +30,10 @@ const HomeV1 = () => {
       {walletModalvisibility && <WalletModal />}
       {metamaskModalVisibility && <MetamaskModal/> }
       {connectWalletModal && <ConnectWallet/> }
-      {/* <LoadingOverlay active={loading} spinner={<FadeLoader color={"#ffffff"}/>}  text='Loading...'> */}
+      <LoadingOverlay active={loading} spinner={<FadeLoader color={"#ffffff"}/>}  text='Loading...'>
       <Header />
       <Banner />
-      {/* </LoadingOverlay> */}
+      </LoadingOverlay>
       <Counter/>
       <CharacterSlider />
       <HowToMint />
