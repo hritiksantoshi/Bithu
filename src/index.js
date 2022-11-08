@@ -14,13 +14,14 @@ root.render(
       <ToastContainer
       position="top-right"
       autoClose={5000}
-      hideProgressBar={true}
+      hideProgressBar={false}
       newestOnTop={false}
-      closeOnClick
+      closeOnClick={true}
       rtl={false}
       pauseOnFocusLoss
       draggable
       pauseOnHover
+      theme="dark"
       />
     </BrowserRouter>
   </ContextProvider>

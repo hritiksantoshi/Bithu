@@ -10,12 +10,11 @@ import { useEffect, useState } from "react";
 import { totalMintCount } from "../../utils/web3mint";
 
 const Banner = () => {
-  const { mintModalHandle, connectWalletModalHanlde, account, loading } =
-    useModal();
+  const { mintModalHandle, connectWalletModalHanlde, account, loading } = useModal();
   const [remaining, setRemaining] = useState(0);
   const calculateRemainingItems = async () => {
     let totaltMintedItems = await totalMintCount();
-    console.log(totaltMintedItems, "ghh");
+   
     setRemaining(parseInt(totaltMintedItems._hex, 16));
 
   };
@@ -26,7 +25,7 @@ const Banner = () => {
   setInterval(() => {
     calculateRemainingItems();
   }, 1000);
-  console.log(remaining, "fgf");
+  
 
   return (
     <BannerV1Wrapper id="home">
@@ -36,7 +35,7 @@ const Banner = () => {
             <div className="bithu_v1_baner_left">
               <h2>Crazy Meta 🎯 NFT collections</h2>
               <h3>
-                <span className="count">{remaining}</span> / 9999 Minted
+                <span className="count">{remaining}</span> / 30 Minted
               </h3>
               <div className="sweet-loading"></div>
               <div className="banner_buttons">

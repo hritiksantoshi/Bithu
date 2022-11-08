@@ -1,49 +1,87 @@
-import contract from '../contracts/bithuabi.json';
-import { ethers } from 'ethers';
-import { isMetaMaskInstalled, ethereum } from '../config';
-
-
+import contract from "../contracts/bithuabi.json";
+import { ethers } from "ethers";
+import { isMetaMaskInstalled, ethereum } from "../config";
+import {  toast } from 'react-toastify';
 export const mint = async (mint_amount) => {
-    try {
-        if (isMetaMaskInstalled()) {
-            const provider = new ethers.providers.Web3Provider(ethereum);
-            const signer = provider.getSigner();
-            const contractAddress = "0x58E1B4750cB6e1f12039D24003465A27174c6F07";
-            const nftContract = new ethers.Contract(contractAddress, contract, signer);
-            let txnHash = await nftContract.mint(ethereum.selectedAddress, mint_amount, {
-                gasLimit: "285000",
-                value: ethers.utils.parseEther((0.03 * mint_amount).toString())
-            })
-            return txnHash
+  try {
+    if (isMetaMaskInstalled()) {
+      const provider = new ethers.providers.Web3Provider(ethereum);
+      const signer = provider.getSigner();
+      const contractAddress = "0x58E1B4750cB6e1f12039D24003465A27174c6F07";
+      const nftContract = new ethers.Contract(
+        contractAddress,
+        contract,
+        signer
+      );
+      let txnHash = await nftContract.mint(
+        ethereum.selectedAddress,
+        mint_amount,
+        {
+          gasLimit: "285000",
+          value: ethers.utils.parseEther((0.03 * mint_amount).toString()),
         }
+      );
+       console.log(txnHash,"ghhh")
+      
+        toast.info('Minting in Process...', {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            });
+  
+      
+     
+      console.log(txnHash.hash,"Hash");
+      const txReceipt = await provider.getTransactionReceipt(
+        `${txnHash.hash}`
+      );
+      if (txReceipt && txReceipt.blockNumber) {
+        console.log(txReceipt,"receipt");
+        return txReceipt;
+      }
     }
-    catch (err) {
-        console.log(err,"not done");
-    }
-}
+  } catch (err) {
+    console.log(err, "not done");
+    toast.error('Transaction Rejected', {
+        position: "top-right",
+        autoClose: 4000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        });
+  }
+};
 
 export const totalMintCount = async () => {
-    if (isMetaMaskInstalled()) {
-        const provider = new ethers.providers.Web3Provider(ethereum);
-        const signer = provider.getSigner();
-        const contractAddress = "0x58E1B4750cB6e1f12039D24003465A27174c6F07";
-        const nftContract = new ethers.Contract(contractAddress, contract, signer);
-        let totalMint = await nftContract.count();
-        console.log(totalMint);
-
-        return totalMint;
-    }
-}
-
-export const pending = async () => {
-    try{
+  if (isMetaMaskInstalled()) {
     const provider = new ethers.providers.Web3Provider(ethereum);
-    provider.on("pending", async (tx) => {
-               const transaction = await provider.getTransaction(tx);
-               console.log(transaction,"transaction");
-      })
+    const signer = provider.getSigner();
+    const contractAddress = "0x58E1B4750cB6e1f12039D24003465A27174c6F07";
+    const nftContract = new ethers.Contract(contractAddress, contract, signer);
+    let totalMint = await nftContract.count();
+    return totalMint;
+  }
+};
+
+export const isTransactionMined = async () => {
+  try {
+    const provider = new ethers.providers.Web3Provider(ethereum);
+    let transactionHash = await mint();
+    const txReceipt = await provider.getTransactionReceipt(
+      transactionHash.hash
+    );
+    if (txReceipt && txReceipt.blockNumber) {
+      return txReceipt;
     }
-    catch(err){
-        console.log(err);
-    }
-}
+  } catch (err) {
+    console.log(err);
+  }
+};

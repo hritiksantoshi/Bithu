@@ -5,10 +5,10 @@ import Button from "../../button/Button";
 import MintModalStyleWrapper from "./MintNow.style";
 import mintImg from "../../../assets/images/icon/mint-img.png";
 import hoverShape from "../../../assets/images/icon/hov_shape_L.svg";
-import { totalMintCount, mint , pending} from '../../../../utils/web3mint';
+import { totalMintCount, mint , isTransactionMined} from '../../../../utils/web3mint';
 import { useEffect } from "react";
 import addNotification from 'react-push-notification';
-
+import {  toast } from 'react-toastify';
 const MintNowModal = () => {
   const [count, setCount] = useState(1);
   const [message, setMessage] = useState('');
@@ -16,7 +16,7 @@ const MintNowModal = () => {
 
   const { mintModalHandle, loader, setloading } = useModal();
 
-  let totalItems = 9999;
+  let totalItems = 30;
   let price = 0.03;
 
   const increaseCount = () => {
@@ -66,17 +66,27 @@ const MintNowModal = () => {
       } else if (count < 1) {
         setMessage('Minimum minting ammount 1.');
       } else {
+      
         let txn = await mint(count);
         setloading(false);  
-        console.log(txn);
         if(txn){
-          notification();     
+          toast.success('Minted Successfully', {
+            position: "top-right",
+            autoClose: 4000,
+            hideProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            });
         }
-        if (txn.length) { 
-          setMessage('Minted successfully!');
-        } else {
-          setMessage('Not')
-        }
+        
+        // if (txn.length) { 
+        //   setMessage('Minted successfully!');
+        // } else {
+        //   setMessage('Not')
+        // }
       }
     }
     catch (err) {
@@ -84,17 +94,18 @@ const MintNowModal = () => {
     }
   }
 
+  const calculateRemainingItems = async () => {
+    let totaltMintedItems = await totalMintCount();
+    setRemaining(totalItems - totaltMintedItems);
+  }
 
-
-  useEffect(() => {
-    const calculateRemainingItems = async () => {
-      let totaltMintedItems = await totalMintCount();
-      setRemaining(totalItems - totaltMintedItems);
-    }
-
+  useEffect(() => { 
     calculateRemainingItems();
   }, [totalItems,remaining]);
 
+  setInterval(() => {
+    calculateRemainingItems();
+  }, 1000);
   return (
     <>
       <MintModalStyleWrapper className="modal_overlay">
@@ -115,7 +126,7 @@ const MintNowModal = () => {
                   <li>
                     <h5>Remaining</h5>
                     <h5>
-                      {remaining}/<span>9999</span>
+                      {remaining}/<span>30</span>
                     </h5>
                   </li>
                   <li>
