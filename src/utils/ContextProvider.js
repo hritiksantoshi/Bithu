@@ -5,6 +5,8 @@ import {
   connectWalletLocaly,
   isWalletConnected,
   disconnectWallet,
+  getBalance,
+  network
 } from "../config";
 
 const ContextProvider = ({ children }) => {
@@ -16,8 +18,14 @@ const ContextProvider = ({ children }) => {
   const [loading,setloading] = useState(false);
   const [account, setAccount] = useState("");
   const [remaining, setRemaining] = useState();
-  
+  const [balance,setBalance] = useState("");
+  const [nwk, setNetwork] = useState("")
 
+
+  const blockchainNetwork = {
+    5:"GoerliETH",
+    1:"Etherum Mainnet"
+  }
  
   const loader = () => {
     setloading(!loading);
@@ -46,7 +54,12 @@ const ContextProvider = ({ children }) => {
 
   const connectWalletHandle = async () => {
     const accounts = await connectWallet();
-    setAccount(accounts);
+     setAccount(accounts);
+   const b =  await getBalance(accounts[0]);
+    setBalance(b)
+    const net = await network();
+    setNetwork(blockchainNetwork[net]);
+    
     if (!isWalletConnected()) {
       connectWalletLocaly();
     }
@@ -57,6 +70,10 @@ const ContextProvider = ({ children }) => {
     if (isWalletConnected()) {
       const accounts = await connectWallet();
       setAccount(accounts);
+      const b =  await getBalance(accounts[0]);
+      setBalance(b);
+      const net = await network();
+      setNetwork(blockchainNetwork[net]);
     }
   };
 
@@ -86,7 +103,10 @@ const ContextProvider = ({ children }) => {
         setRemaining,
         loader,
         loading,
-        setloading
+        setloading,
+        balance,
+        network,
+        nwk
       }}
     >
       {children}

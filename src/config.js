@@ -1,3 +1,4 @@
+import { ethers } from "ethers";
 export const ethereum = window.ethereum;
 
 
@@ -20,11 +21,26 @@ export const connectWallet = async () =>{
 
 // connect to metakmask wallet
 export const connectAccount = async () =>{
-    const accounts = await ethereum.request({method: 'eth_accounts'});
+    const accounts = await ethereum.request({
+        method: 'eth_accounts',
+    });
     
     return accounts;
 }
 
+export const getBalance = async (address) =>{
+    const Balance = await ethereum.request({
+        method:'eth_getBalance',
+        params: [address, 'latest']});
+    
+    console.log(ethers.utils.formatEther(Balance));
+    return ethers.utils.formatEther(Balance); 
+}
+
+export const network = async () => {
+    const nwk = ethereum.networkVersion;
+    return nwk;
+}
 
 // disconnect metamask wallet
 export const disconnectWallet = () =>{

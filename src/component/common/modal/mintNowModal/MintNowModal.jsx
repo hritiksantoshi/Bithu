@@ -103,9 +103,9 @@ const MintNowModal = () => {
     calculateRemainingItems();
   }, [totalItems,remaining]);
 
-  setInterval(() => {
-    calculateRemainingItems();
-  }, 1000);
+  // setInterval(() => {
+  //   calculateRemainingItems();
+  // }, 1000);
   return (
     <>
       <MintModalStyleWrapper className="modal_overlay">

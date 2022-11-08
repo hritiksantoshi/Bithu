@@ -15,7 +15,10 @@ const Header = () => {
     metamaskModalHandle, 
     account, 
     isWalletAlreadyConnected, 
-    disconnectWalletFromApp } = useModal();
+    disconnectWalletFromApp ,
+    balance,
+    nwk
+  } = useModal();
   const [isMobileMenu, setMobileMenu] = useState(false);
   const handleMobileMenu = () => {
     setMobileMenu(!isMobileMenu);
@@ -97,7 +100,7 @@ const Header = () => {
               { account ?
               <Dropdown>
                 <Dropdown.Toggle variant="white" id="dropdown-basic" className="connect_btn">
-                  { substr(account.toString(), 6) }
+                  { substr(account.toString(), 6)}{" "}{"|"}{" "}{"Bal : "}{balance.substr(0,6)}{" "}{nwk}
                 </Dropdown.Toggle>
           
                 <Dropdown.Menu>

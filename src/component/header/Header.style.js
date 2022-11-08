@@ -25,7 +25,7 @@ const NavWrapper = styled.nav`
 
   .bithu_menu_sect {
     height: 90px;
-    width: 100%;
+    width: 106%;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -170,7 +170,7 @@ const NavWrapper = styled.nav`
 
     .connect_btn {
       height: 50px;
-      min-width: 150px;
+      min-width: 180px;
       border: none;
       margin-left: 20px;
       background: rgba(255, 255, 255, 0.2);
