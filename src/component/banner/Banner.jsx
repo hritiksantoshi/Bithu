@@ -22,9 +22,9 @@ const Banner = () => {
       calculateRemainingItems();
   }, [remaining, setRemaining]);
   
-  setInterval(() => {
-    calculateRemainingItems();
-  }, 1000);
+  // setInterval(() => {
+  //   calculateRemainingItems();
+  // }, 1000);
   
 
   return (
