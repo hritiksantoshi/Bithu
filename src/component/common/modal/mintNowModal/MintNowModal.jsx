@@ -68,6 +68,7 @@ const MintNowModal = () => {
       } else {
       
         let txn = await mint(count);
+        console.log(txn,"txn");
         setloading(false);  
         if(txn){
           toast.success('Minted Successfully', {

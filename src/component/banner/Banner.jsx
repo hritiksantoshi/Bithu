@@ -14,14 +14,14 @@ const Banner = () => {
   const [remaining, setRemaining] = useState(0);
   const calculateRemainingItems = async () => {
     let totaltMintedItems = await totalMintCount();
-   
+   console.log(parseInt(totaltMintedItems._hex, 16),"total");
     setRemaining(parseInt(totaltMintedItems._hex, 16));
 
   };
   useEffect(() => {
       calculateRemainingItems();
   }, [remaining]);
-  
+  console.log(remaining,"remaining");
   // setInterval(() => {
   //   calculateRemainingItems();
   // }, 1000);

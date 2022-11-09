@@ -21,8 +21,9 @@ export const mint = async (mint_amount) => {
           value: ethers.utils.parseEther((0.03 * mint_amount).toString()),
         }
       );
-       console.log(txnHash,"ghhh")
-      
+       console.log(txnHash,"txnHash");
+
+        if(txnHash){
         toast.info('Minting in Process...', {
             position: "top-right",
             autoClose: 5000,
@@ -34,12 +35,15 @@ export const mint = async (mint_amount) => {
             theme: "light",
             });
   
-      
+          }
      
       console.log(txnHash.hash,"Hash");
-      const txReceipt = await provider.getTransactionReceipt(
-        `${txnHash.hash}`
+      const txReceipt = await provider.waitForTransaction(
+        `${txnHash.hash}`,
+        1,
+        300000
       );
+      console.log(txReceipt,"txReceipt");
       if (txReceipt && txReceipt.blockNumber) {
         console.log(txReceipt,"receipt");
         return txReceipt;
@@ -71,17 +75,17 @@ export const totalMintCount = async () => {
   }
 };
 
-export const isTransactionMined = async () => {
-  try {
-    const provider = new ethers.providers.Web3Provider(ethereum);
-    let transactionHash = await mint();
-    const txReceipt = await provider.getTransactionReceipt(
-      transactionHash.hash
-    );
-    if (txReceipt && txReceipt.blockNumber) {
-      return txReceipt;
-    }
-  } catch (err) {
-    console.log(err);
-  }
-};
+// export const isTransactionMined = async () => {
+//   try {
+//     const provider = new ethers.providers.Web3Provider(ethereum);
+//     let transactionHash = await mint();
+//     const txReceipt = await provider.getTransactionReceipt(
+//       transactionHash.hash
+//     );
+//     if (txReceipt && txReceipt.blockNumber) {
+//       return txReceipt;
+//     }
+//   } catch (err) {
+//     console.log(err);
+//   }
+// };
