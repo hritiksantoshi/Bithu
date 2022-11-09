@@ -54,6 +54,7 @@ const ContextProvider = ({ children }) => {
 
   const connectWalletHandle = async () => {
     const accounts = await connectWallet();
+    console.log(accounts,"accounts");
      setAccount(accounts);
    const b =  await getBalance(accounts[0]);
     setBalance(b)

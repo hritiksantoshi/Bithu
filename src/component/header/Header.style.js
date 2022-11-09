@@ -22,6 +22,9 @@ const NavWrapper = styled.nav`
       transition: all 0.2s;
     }
   }
+  .dropdown-menu{
+    margin-left: 166px;
+  }
 
   .bithu_menu_sect {
     height: 90px;
@@ -180,6 +183,7 @@ const NavWrapper = styled.nav`
       }
     }
   }
+   
 
   @media (max-width: 1024px) {
     .bithu_menu_list {

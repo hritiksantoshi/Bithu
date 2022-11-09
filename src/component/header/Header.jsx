@@ -103,7 +103,7 @@ const Header = () => {
                   { substr(account.toString(), 6)}{" "}{"|"}{" "}{"Bal : "}{balance.substr(0,6)}{" "}{nwk}
                 </Dropdown.Toggle>
           
-                <Dropdown.Menu>
+                <Dropdown.Menu className="dropdown-menu">
                   <Dropdown.Item href="# " onClick={() => disconnectWalletFromApp() }>Disconnect</Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown>
