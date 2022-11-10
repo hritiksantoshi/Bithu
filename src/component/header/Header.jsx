@@ -100,7 +100,7 @@ const Header = () => {
               { account ?
               <Dropdown>
                 <Dropdown.Toggle variant="white" id="dropdown-basic" className="connect_btn">
-                {"Bal : "}{balance.substr(0,6)}{" "}{nwk}{" "}{"|"}{" "}{ substr(account.toString(), 6)}
+                {balance.substr(0,6)}{" "}{nwk}{" "}{"|"}{" "}{ substr(account.toString(), 6)}
                 </Dropdown.Toggle>
           
                 <Dropdown.Menu className="dropdown-menu">

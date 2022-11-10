@@ -7,26 +7,20 @@ import mintLiveDownArrow from "../assets/images/nft/mint_live_down_arrow.svg";
 import mintLiveText from "../assets/images/nft/mint_live_text.png";
 import homeImageBG from "../assets/images/nft/home_img_bg.png";
 import { useEffect, useState } from "react";
-import { totalMintCount,whiteListUser } from "../../utils/web3mint";
+import { totalMintCount } from "../../utils/web3mint";
 
 const Banner = () => {
   const { mintModalHandle, connectWalletModalHanlde, account, loading } = useModal();
   const [remaining, setRemaining] = useState(0);
   const calculateRemainingItems = async () => {
     let totaltMintedItems = await totalMintCount();
-   console.log(parseInt(totaltMintedItems._hex, 16),"total");
     setRemaining(parseInt(totaltMintedItems._hex, 16));
-    // await whiteListUser("0xAf2FFfD3E5fa0A2C528a01cf8BcDa22b41e6769B");
+    // await getwhiteListUser("0xAf2FFfD3E5fa0A2C528a01cf8BcDa22b41e6769B");
   };
 
   useEffect(() => {
       calculateRemainingItems();
-     
-  }, [remaining]);
-  // console.log(remaining,"remaining");
-  setInterval(() => {
-    calculateRemainingItems();
-  }, 1000);
+  });
   
 
   return (

@@ -5,7 +5,7 @@ import Button from "../../button/Button";
 import MintModalStyleWrapper from "./MintNow.style";
 import mintImg from "../../../assets/images/icon/mint-img.png";
 import hoverShape from "../../../assets/images/icon/hov_shape_L.svg";
-import { totalMintCount, mint , isTransactionMined} from '../../../../utils/web3mint';
+import { totalMintCount, mint ,getwhiteListUser} from '../../../../utils/web3mint';
 import { useEffect } from "react";
 import addNotification from 'react-push-notification';
 import {  toast } from 'react-toastify';
@@ -14,7 +14,7 @@ const MintNowModal = () => {
   const [message, setMessage] = useState('');
   const [remaining, setRemaining] = useState(0);
 
-  const { mintModalHandle, loader, setloading } = useModal();
+  const { mintModalHandle, loader, setloading,account } = useModal();
 
   let totalItems = 50;
   let price = 0.03;
@@ -55,13 +55,29 @@ const MintNowModal = () => {
         setMessage('Minimum minting ammount 1.');
       } else {
       
-        let txn = await mint(count,setloading);
-        console.log(txn,"txn");
-         setloading(false);
-        if(txn){
-          toast.success('Minted Successfully', {
+        let user = await getwhiteListUser(`${account}`);
+       
+        if(user){
+          let txn = await mint(count,setloading);
+          setloading(false);
+          console.log(txn,"txn");  
+          if(txn){
+            toast.success('Minted Successfully', {
+              position: "top-right",
+              autoClose: 4000,
+              hideProgressBar: true,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "light",
+              });
+          }
+        }else{
+          setloading(false);
+          toast.error('You are not whitelisted Please Contact Admin', {
             position: "top-right",
-            autoClose: 4000,
+            autoClose: 6000,
             hideProgressBar: true,
             closeOnClick: true,
             pauseOnHover: true,
@@ -70,6 +86,7 @@ const MintNowModal = () => {
             theme: "light",
             });
         }
+       
       }
     }
     catch (err) {
@@ -85,7 +102,7 @@ const MintNowModal = () => {
 
   useEffect(() => { 
     calculateRemainingItems();
-  }, [totalItems,remaining]);
+  }, [remaining]);
 
   // setInterval(() => {
   //   calculateRemainingItems();
