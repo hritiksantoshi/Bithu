@@ -24,9 +24,9 @@ const Banner = () => {
      
   }, [remaining]);
   // console.log(remaining,"remaining");
-  // setInterval(() => {
-  //   calculateRemainingItems();
-  // }, 1000);
+  setInterval(() => {
+    calculateRemainingItems();
+  }, 1000);
   
 
   return (
