@@ -16,7 +16,7 @@ const MintNowModal = () => {
 
   const { mintModalHandle, loader, setloading } = useModal();
 
-  let totalItems = 30;
+  let totalItems = 50;
   let price = 0.03;
 
   const increaseCount = () => {
@@ -45,18 +45,6 @@ const MintNowModal = () => {
     }
   }
 
-  const notification = () => {
-    addNotification({
-      title: 'Minting',
-      message: 'Your Minting is in process',
-      duration:7000,
-      theme: 'light',
-      closeButton:"X",
-      backgroundTop:"green",
-      backgroundBottom:"yellowgreen",
-      native:true
-  });
-  }
 
 
   const mintNow = async () => {
@@ -67,9 +55,9 @@ const MintNowModal = () => {
         setMessage('Minimum minting ammount 1.');
       } else {
       
-        let txn = await mint(count);
+        let txn = await mint(count,setloading);
         console.log(txn,"txn");
-        setloading(false);  
+         setloading(false);
         if(txn){
           toast.success('Minted Successfully', {
             position: "top-right",
@@ -82,15 +70,10 @@ const MintNowModal = () => {
             theme: "light",
             });
         }
-        
-        // if (txn.length) { 
-        //   setMessage('Minted successfully!');
-        // } else {
-        //   setMessage('Not')
-        // }
       }
     }
     catch (err) {
+      setloading(false)
       console.log(err,"err");
     }
   }

@@ -2,7 +2,7 @@ import contract from "../contracts/bithuabi.json";
 import { ethers } from "ethers";
 import { isMetaMaskInstalled, ethereum } from "../config";
 import {  toast } from 'react-toastify';
-export const mint = async (mint_amount) => {
+export const mint = async (mint_amount,setloading) => {
   try {
     if (isMetaMaskInstalled()) {
       const provider = new ethers.providers.Web3Provider(ethereum);
@@ -13,6 +13,7 @@ export const mint = async (mint_amount) => {
         contract,
         signer
       );
+     
       let txnHash = await nftContract.mint(
         ethereum.selectedAddress,
         mint_amount,
@@ -34,7 +35,7 @@ export const mint = async (mint_amount) => {
             progress: undefined,
             theme: "light",
             });
-  
+            setloading(false);
           }
      
       console.log(txnHash.hash,"Hash");
@@ -75,17 +76,20 @@ export const totalMintCount = async () => {
   }
 };
 
-// export const isTransactionMined = async () => {
-//   try {
-//     const provider = new ethers.providers.Web3Provider(ethereum);
-//     let transactionHash = await mint();
-//     const txReceipt = await provider.getTransactionReceipt(
-//       transactionHash.hash
-//     );
-//     if (txReceipt && txReceipt.blockNumber) {
-//       return txReceipt;
-//     }
-//   } catch (err) {
-//     console.log(err);
-//   }
-// };
+export const whiteListUser = async (_user) => {
+  try {
+    if(isMetaMaskInstalled()) {
+      const provider = new ethers.providers.Web3Provider(ethereum);
+      const signer = provider.getSigner();
+      const contractAddress = "0x58E1B4750cB6e1f12039D24003465A27174c6F07";
+      const nftContract = new ethers.Contract(contractAddress, contract, signer);
+      let user = await nftContract.whitelistUser(_user);
+      
+      console.log(user,"whitelisted");
+      return user
+    }
+  } catch (error) {
+    console.log(error,"whitelisterror");
+  }
+ 
+}
