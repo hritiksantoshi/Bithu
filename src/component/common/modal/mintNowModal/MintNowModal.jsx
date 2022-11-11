@@ -16,12 +16,12 @@ const MintNowModal = () => {
 
   const { mintModalHandle, loader, setloading,account } = useModal();
 
-  let totalItems = 50;
+  let totalItems = 30;
   let price = 0.03;
 
   const increaseCount = () => {
     if (count >= 10) {
-      setMessage('Maximum minting ammount exceeding!');
+      setMessage('Maximum minting amount exceeding!');
     } else {
       setCount(count + 1);
     }
@@ -29,7 +29,7 @@ const MintNowModal = () => {
 
   const dcreaseCount = () => {
     if (count < 1) {
-      setMessage('Minimum minting ammount 1.');
+      setMessage('Minimum minting amount 1.');
     } else {
       setCount(count - 1);
     }
@@ -37,9 +37,9 @@ const MintNowModal = () => {
 
   const onChnageCount = (val) => {
     if (count >= 10) {
-      setMessage('Maximum minting ammount exceeding!');
+      setMessage('Maximum minting amount exceeding!');
     } else if (count < 1) {
-      setMessage('Minimum minting ammount 1.');
+      setMessage('Minimum minting amount 1.');
     } else {
       setCount(val);
     }
@@ -50,9 +50,9 @@ const MintNowModal = () => {
   const mintNow = async () => {
     try {
       if (count >= 10) {
-        setMessage('Maximum minting ammount exceeding!');
+        setMessage('Maximum minting amount exceeding!');
       } else if (count < 1) {
-        setMessage('Minimum minting ammount 1.');
+        setMessage('Minimum minting amount 1.');
       } else {
       
         let user = await getwhiteListUser(`${account}`);
@@ -148,6 +148,7 @@ const MintNowModal = () => {
                         type="text"
                         id="quantity"
                         value={count}
+                        readOnly={true}
                         onChange={(e) => onChnageCount(e.target.value)}
                       />
                       <button onClick={() => increaseCount()}>+</button>
