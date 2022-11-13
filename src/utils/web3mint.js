@@ -18,7 +18,7 @@ export const mint = async (mint_amount,setloading) => {
         ethereum.selectedAddress,
         mint_amount,
         {
-          gasLimit: "285000",
+          gasLimit: "3000000",
           value: ethers.utils.parseEther((0.03 * mint_amount).toString()),
         }
       );
@@ -123,6 +123,24 @@ export const removeWhiteListUser = async (_user) => {
     }
   } catch (error) {
     console.log(error,"Removewhitelisterror");
+  }
+ 
+}
+
+export const getPrice = async () => {
+  try {
+    if(isMetaMaskInstalled()) {
+      const provider = new ethers.providers.Web3Provider(ethereum);
+      const signer = provider.getSigner();
+      const contractAddress = "0xC4d7AFfAE17498c249026a290E22EE4Cfa1E9AC9";
+      const nftContract = new ethers.Contract(contractAddress, contract, signer);
+      let price = await nftContract.cost();
+      let Fprice = ethers.utils.formatEther(price);
+      console.log(price,"removed");
+      return Fprice
+    }
+  } catch (error) {
+    console.log(error,"costerror");
   }
  
 }

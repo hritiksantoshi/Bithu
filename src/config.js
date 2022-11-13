@@ -45,7 +45,6 @@ export const network = async () => {
 // disconnect metamask wallet
 export const disconnectWallet = () =>{
     localStorage.removeItem('isWalletConnected');
-    window.location.reload();
 }
 
 // check metamask on disconnect

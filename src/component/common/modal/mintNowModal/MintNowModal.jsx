@@ -5,19 +5,35 @@ import Button from "../../button/Button";
 import MintModalStyleWrapper from "./MintNow.style";
 import mintImg from "../../../assets/images/icon/mint-img.png";
 import hoverShape from "../../../assets/images/icon/hov_shape_L.svg";
-import { totalMintCount, mint ,getwhiteListUser} from '../../../../utils/web3mint';
+import { totalMintCount, mint ,getwhiteListUser,getPrice} from '../../../../utils/web3mint';
 import { useEffect } from "react";
-import addNotification from 'react-push-notification';
+import axios from "axios";
 import {  toast } from 'react-toastify';
 const MintNowModal = () => {
   const [count, setCount] = useState(1);
   const [message, setMessage] = useState('');
   const [remaining, setRemaining] = useState(0);
-
+  const [total,setTotal] = useState(0);
+  const [Price ,setPrice] = useState();
   const { mintModalHandle, loader, setloading,account } = useModal();
+  
+  let totalItems = total;
+  let price = Price;
 
-  let totalItems = 30;
-  let price = 0.03;
+  const config = {
+    method: 'get',
+    url: 'https://api.pinata.cloud/data/userPinnedDataTotal',
+    headers: { 
+      'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySW5mb3JtYXRpb24iOnsiaWQiOiJkMzE5YjA3ZC01YjdiLTQ3YTYtOWNmYy1iM2QwMjVlMmM3YzEiLCJlbWFpbCI6ImhyeHRvc0BnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwicGluX3BvbGljeSI6eyJyZWdpb25zIjpbeyJpZCI6IkZSQTEiLCJkZXNpcmVkUmVwbGljYXRpb25Db3VudCI6MX0seyJpZCI6Ik5ZQzEiLCJkZXNpcmVkUmVwbGljYXRpb25Db3VudCI6MX1dLCJ2ZXJzaW9uIjoxfSwibWZhX2VuYWJsZWQiOmZhbHNlLCJzdGF0dXMiOiJBQ1RJVkUifSwiYXV0aGVudGljYXRpb25UeXBlIjoic2NvcGVkS2V5Iiwic2NvcGVkS2V5S2V5IjoiMTdlMzFjMGQ5MWRkMjhlM2U5NzMiLCJzY29wZWRLZXlTZWNyZXQiOiIzM2RmYTkxNGM5OWZlMjFlYzcyMWIzOWE0NmJiZDRmZGE3NWI3Mjc2OWM5NzdlZDMwNDA3Zjc3MzZkM2MzYmIxIiwiaWF0IjoxNjY4MzE0OTc0fQ.6sln8Kd7hwOOtJf_xu4PFeIxtUoytdpJhpTds5xpVJQ'
+    }
+  };
+  
+  const data = async () => {
+    const res = await axios(config);
+    let Total = (res.data.pin_count-1)/2;
+    setTotal(Total);
+    // console.log((res.data.pin_count-1)/2,"axios");  
+  }
 
   const increaseCount = () => {
     if (count >= 10) {
@@ -100,13 +116,20 @@ const MintNowModal = () => {
     setRemaining(totalItems - totaltMintedItems);
   }
 
+  const nftprice = async () => {
+    let cost = await  getPrice();
+    setPrice(cost);
+  }  
+
   useEffect(() => { 
     calculateRemainingItems();
-  }, [remaining]);
-
-  // setInterval(() => {
-  //   calculateRemainingItems();
-  // }, 1000);
+    nftprice();
+  });
+   
+  useEffect(() => { 
+    data();
+  },[]);
+  
   return (
     <>
       <MintModalStyleWrapper className="modal_overlay">
@@ -127,7 +150,7 @@ const MintNowModal = () => {
                   <li>
                     <h5>Remaining</h5>
                     <h5>
-                      {remaining}/<span>30</span>
+                      {remaining}/<span>{total}</span>
                     </h5>
                   </li>
                   <li>
