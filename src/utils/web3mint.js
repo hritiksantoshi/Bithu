@@ -127,3 +127,21 @@ export const removeWhiteListUser = async (_user) => {
  
 }
 
+export const getPrice = async () => {
+  try {
+    if(isMetaMaskInstalled()) {
+      const provider = new ethers.providers.Web3Provider(ethereum);
+      const signer = provider.getSigner();
+      const contractAddress = "0xC4d7AFfAE17498c249026a290E22EE4Cfa1E9AC9";
+      const nftContract = new ethers.Contract(contractAddress, contract, signer);
+      let price = await nftContract.cost();
+      let Fprice = ethers.utils.formatEther(price);
+      console.log(price,"removed");
+      return Fprice
+    }
+  } catch (error) {
+    console.log(error,"costerror");
+  }
+ 
+}
+

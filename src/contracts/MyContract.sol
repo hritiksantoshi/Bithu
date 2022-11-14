@@ -16,7 +16,7 @@
          string public baseURI;
          string public baseExtension = ".json";
          uint256 public cost = 0.03 ether;
-         uint256 public maxSupply = 1000;
+         uint256 public maxSupply;
          uint256 public maxMintAmount = 5;
          bool public paused = false;
          mapping(address => bool) public whitelisted;
@@ -24,8 +24,10 @@
          constructor(
              string memory _name,
              string memory _symbol,
-             string memory _initBaseURI
+             string memory _initBaseURI,
+             uint256  _maxsupply
          ) ERC721(_name,_symbol) {
+             maxSupply = _maxsupply;
              setBaseURI(_initBaseURI);
              mint(msg.sender, 1);
          }
@@ -85,7 +87,7 @@
                  "ERC721Metadata: URI query for nonexistent token"
              );
 
-             string memory currentBaseURI = baseURI();
+             string memory currentBaseURI = _baseURI();
              return bytes(currentBaseURI).length > 0
                  ? string(abi.encodePacked(currentBaseURI, tokenId.toString(), baseExtension))
                  : "";
